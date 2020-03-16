@@ -17,6 +17,8 @@ const StatBlock = styled.div`
   align-items: center;
   justify-items: center;
   background: #f2f2f2;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
 `;
 
 export default function Stats({ url }) {
