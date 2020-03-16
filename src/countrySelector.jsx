@@ -7,7 +7,6 @@ export default function CountrySelector() {
   const { stats: countries, loading, error } = useStats(
     "https://covid19.mathdro.id/api/countries"
   );
-  // const url = `https://covid19.mathdro.id/api/countries/${country}`;
 
   if (!countries) return <p>Loading...</p>;
   if (loading) return <p>Loading...</p>;
