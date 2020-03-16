@@ -21,36 +21,58 @@ const StatBlock = styled.div`
     "Helvetica Neue", Arial, sans-serif;
 `;
 
+const ErrorBlock = styled.div`
+  display: grid;
+  color: red;
+  font-size: 1.5rem;
+  padding: 2rem;
+  border-radius: 1rem;
+  text-align: center;
+  align-items: center;
+  justify-items: center;
+  background: #f2f2f2;
+  font-family: "Courier New", Courier, monospace;
+`;
+
+const Info = styled.div`
+  background: #f2f2f2;
+  border-radius: 0.5 rem;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 1rem;
+  padding: 1rem;
+  margin-top: 1rem;
+`;
+
 export default function Stats({ url }) {
   const { stats, loading, error } = useStats(url);
   console.log(stats, loading, error);
   if (!stats) return <p>Loading...</p>;
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error...</p>;
-  if (stats.error) return <StatBlock>{stats.error.message}</StatBlock>;
+  if (stats.error) return <ErrorBlock>{stats.error.message}</ErrorBlock>;
 
   return (
     <>
       <StatGrid>
-        <StatBlock>
+        <StatBlock style={{ color: "steelblue" }}>
           <h3>Confirmed:</h3>
           <span>{stats.confirmed.value}</span>
         </StatBlock>
 
-        <StatBlock>
+        <StatBlock style={{ color: "red" }}>
           <h3>Deaths:</h3>
           <span>{stats.deaths.value}</span>
         </StatBlock>
 
-        <StatBlock>
+        <StatBlock style={{ color: "green" }}>
           <h3>Recovered:</h3>
           <span>{stats.recovered.value}</span>
         </StatBlock>
       </StatGrid>
-      <div>
+      <Info>
         <p>Last Update: </p>
-        <span>{stats.lastUpdate}</span>
-      </div>
+        <span>{new Date(Date.parse(stats.lastUpdate)).toString()}</span>
+      </Info>
     </>
   );
 }
