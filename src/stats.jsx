@@ -24,7 +24,7 @@ const StatBlock = styled.div`
 const ErrorBlock = styled.div`
   display: grid;
   color: red;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   padding: 2rem;
   border-radius: 1rem;
   text-align: center;
@@ -59,7 +59,7 @@ export default function Stats({ url }) {
           <span>{stats.confirmed.value}</span>
         </StatBlock>
 
-        <StatBlock style={{ color: "red" }}>
+        <StatBlock style={{ color: "#929292" }}>
           <h3>Deaths:</h3>
           <span>{stats.deaths.value}</span>
         </StatBlock>
